@@ -4,4 +4,15 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="next">next</string>
+    <string name="login">Login</string>
+    <string name="create_account_signin">Create an account or login now!</string>
+    <string name="terms_and_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="authentication_failed">Authentication failed</string>
+    <string name="email_and_password">Email and password</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="new_here">New here?</string>
+    <string name="register_now">Register now!</string>
+    <string name="by_creating_an_account_you_agree_on">By creating an account, you agree on our</string>
 </resources>

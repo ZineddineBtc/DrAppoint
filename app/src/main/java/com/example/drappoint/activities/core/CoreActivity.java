@@ -1,7 +1,8 @@
-package com.example.drappoint;
+package com.example.drappoint.activities.core;
 
 import android.os.Bundle;
 
+import com.example.drappoint.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
