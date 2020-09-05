@@ -58,6 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                 " " : emailET.getText().toString();
         String password = passwordET.getText().toString().isEmpty() ?
                 " " : passwordET.getText().toString();
+        if(email.equals(" ") || password.equals(" ")){
+            displayErrorTV(R.string.invalid_input);
+            return;
+        }
         progressDialog.setMessage("Login...");
         progressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(email, password)

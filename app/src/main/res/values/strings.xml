@@ -15,4 +15,19 @@
     <string name="new_here">New here?</string>
     <string name="register_now">Register now!</string>
     <string name="by_creating_an_account_you_agree_on">By creating an account, you agree on our</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="insufficient_password">Password must contain at least 8 letters</string>
+    <string name="register">Register</string>
+    <string name="already_registered">Already registered?</string>
+    <string name="set_up_profile">Set up profile</string>
+    <string name="name_phone">Name and phone number</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone number</string>
+    <string name="finish">Finish</string>
+    <string name="name_unspecified">Name must be specified</string>
+    <string name="name_not_number">Name must not contains digits</string>
+    <string name="insufficient_phone_number">Phone number must be at least 10 digits</string>
+    <string name="address_unspecified">Address must be specified</string>
+    <string name="address">Address</string>
+    <string name="invalid_input">Invalid input</string>
 </resources>
