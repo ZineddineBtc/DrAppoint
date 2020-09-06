@@ -30,4 +30,6 @@
     <string name="address_unspecified">Address must be specified</string>
     <string name="address">Address</string>
     <string name="invalid_input">Invalid input</string>
+    <string name="title_profile">Profile</string>
+    <string name="sign_out">Sign out</string>
 </resources>

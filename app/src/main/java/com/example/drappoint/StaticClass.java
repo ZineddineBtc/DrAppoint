@@ -14,6 +14,7 @@ public class StaticClass {
     public static String EMAIL = "email";
     public static String PHONE = "phone";
     public static String ADDRESS = "address";
+    public static String PHOTO = "photo";
 
     public static boolean isValidEmail(String email) {
         if(email.length()>4){
