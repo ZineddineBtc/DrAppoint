@@ -1,6 +1,9 @@
 package com.example.drappoint;
 
+import com.example.drappoint.models.Doctor;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -15,6 +18,10 @@ public class StaticClass {
     public static String PHONE = "phone";
     public static String ADDRESS = "address";
     public static String PHOTO = "photo";
+    public static String DOCTOR_ID = "doctor_id";
+    public static String mySimpleDateFormat = "dd-MM-yyyy";
+
+    public static ArrayList<Doctor> doctors = new ArrayList<>();
 
     public static boolean isValidEmail(String email) {
         if(email.length()>4){
@@ -44,5 +51,4 @@ public class StaticClass {
         return new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault())
                 .format(Calendar.getInstance().getTime());
     }
-
 }

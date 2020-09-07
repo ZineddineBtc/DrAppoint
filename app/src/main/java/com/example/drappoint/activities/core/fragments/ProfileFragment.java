@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.drappoint.R;
 import com.example.drappoint.StaticClass;
+import com.example.drappoint.activities.SettingsActivity;
 import com.example.drappoint.activities.TermsActivity;
 import com.example.drappoint.activities.entry.LoginActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -49,9 +53,9 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_profile, container, false);
         context = fragmentView.getContext();
+        setHasOptionsMenu(true);
         sharedPreferences = context.getSharedPreferences(StaticClass.SHARED_PREFERENCES, MODE_PRIVATE);
         database = FirebaseFirestore.getInstance();
-
         findViewsByIds();
         initializeData();
         setClickListeners();
@@ -275,6 +279,18 @@ public class ProfileFragment extends Fragment {
                 errorTV.setVisibility(View.GONE);
             }
         }, 1500);
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_settings, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.openSettings){
+            startActivity(new Intent(context, SettingsActivity.class));
+        }
+        return false;
     }
 }
 

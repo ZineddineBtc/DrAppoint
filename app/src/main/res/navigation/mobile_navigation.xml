@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_doctors">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.drappoint.activities.core.fragments.HomeFragment"
+        android:id="@+id/navigation_doctors"
+        android:name="com.example.drappoint.activities.core.fragments.DoctorsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_doctors" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.drappoint.activities.core.fragments.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_appointments"
+        android:name="com.example.drappoint.activities.core.fragments.AppointmentsFragment"
+        android:label="@string/title_appointments"
+        tools:layout="@layout/fragment_appointments" />
 
     <fragment
         android:id="@+id/navigation_profile"
