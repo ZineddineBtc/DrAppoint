@@ -21,12 +21,17 @@ import com.example.drappoint.StaticClass;
 import com.example.drappoint.activities.core.DoctorActivity;
 import com.example.drappoint.daos.AppointmentHistoryDAO;
 import com.example.drappoint.models.Appointment;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -102,10 +107,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                                     list.get(getAdapterPosition()).getDoctor().getId());
                                             dao.deleteAppointment(
                                                     list.get(getAdapterPosition()).getDoctor().getId());
-                                            Toast.makeText(itemView.getContext(),
-                                            list.get(getAdapterPosition()).getDoctor().getName()
-                                                            +" removed",
-                                                    Toast.LENGTH_SHORT).show();
                                             list.remove(getAdapterPosition());
                                             notifyDataSetChanged();
                                         }
@@ -140,11 +141,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         public void onClick(View view) {
             if (mClickListener != null)
                 mClickListener.onItemClick(view, getAdapterPosition());
-
-            itemView.getContext().startActivity(new Intent(itemView.getContext(),
-                    DoctorActivity.class)
-            .putExtra(StaticClass.DOCTOR_ID,
-                    list.get(getAdapterPosition()).getDoctor().getId()));
         }
     }
 

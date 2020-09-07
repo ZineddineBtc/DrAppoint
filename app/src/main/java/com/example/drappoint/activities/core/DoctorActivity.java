@@ -189,7 +189,9 @@ public class DoctorActivity extends AppCompatActivity {
             }
 
         }catch (NullPointerException e){
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            dateReservations.put(dateTV.getText().toString(), reservations);
+            canConfirm = true;
+            confirmButton.setBackground(getDrawable(R.drawable.special_background_rounded_border));
         }
         reservationsTV.setText(String.valueOf(reservations));
     }
