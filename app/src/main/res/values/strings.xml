@@ -60,4 +60,6 @@
     <string name="title_appointments">Appointments</string>
     <string name="random_specialty">Dermatologist</string>
     <string name="delete">Delete</string>
+    <string name="from">from</string>
+    <string name="team_name">Monks</string>
 </resources>

@@ -25,12 +25,10 @@ import android.widget.Toast;
 import com.example.drappoint.R;
 import com.example.drappoint.StaticClass;
 import com.example.drappoint.adapter.SetDate;
-import com.example.drappoint.adapter.SetTime;
 import com.example.drappoint.daos.AppointmentHistoryDAO;
 import com.example.drappoint.models.Doctor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -227,6 +225,7 @@ public class DoctorActivity extends AppCompatActivity {
                             }
                         });
             }
+            dateReference.update(dateTV.getText().toString(), FieldValue.increment(1));
             onBackPressed();
             displayConfirmed();
             insertAppointment();
