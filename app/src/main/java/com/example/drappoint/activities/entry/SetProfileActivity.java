@@ -76,6 +76,7 @@ public class SetProfileActivity extends AppCompatActivity {
                 new String[]{
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.CALL_PHONE,
                         Manifest.permission.INTERNET},
                 101);
     }
@@ -101,13 +102,13 @@ public class SetProfileActivity extends AppCompatActivity {
         editor.apply();
     }
     public void writeOnlineDatabase(){
-        Map<String, Object> storeReference = new HashMap<>();
-        storeReference.put("name", name);
-        storeReference.put("phone", phone);
-        storeReference.put("address", address);
+        Map<String, Object> userReference = new HashMap<>();
+        userReference.put("name", name);
+        userReference.put("phone", phone);
+        userReference.put("address", address);
         database.collection("users")
                 .document(email)
-                .set(storeReference)
+                .set(userReference)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

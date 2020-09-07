@@ -150,21 +150,22 @@ public class ProfileFragment extends Fragment {
     }
     private void updateName(String newName){
         if(isNameEdit){
-            if(!newName.equals(sharedPreferences.getString(StaticClass.NAME, ""))
-                    && !newName.isEmpty() && !StaticClass.containsDigit(newName)){
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(StaticClass.NAME, newName);
-                editor.apply();
-                initializeData();
-                userReference.put("name", newName);
-                database.collection("users")
-                        .document(emailTV.getText().toString())
-                        .update(userReference);
-                Snackbar.make(fragmentView.findViewById(R.id.parentLayout),
-                        "Name updated", 1000)
-                        .setAction("Action", null).show();
-            }else{
-                displayError();
+            if(!newName.equals(sharedPreferences.getString(StaticClass.NAME, ""))) {
+                if (!newName.isEmpty() && !StaticClass.containsDigit(newName)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(StaticClass.NAME, newName);
+                    editor.apply();
+                    initializeData();
+                    userReference.put("name", newName);
+                    database.collection("users")
+                            .document(emailTV.getText().toString())
+                            .update(userReference);
+                    Snackbar.make(fragmentView.findViewById(R.id.parentLayout),
+                            "Name updated", 1000)
+                            .setAction("Action", null).show();
+                } else {
+                    displayError();
+                }
             }
         }
     }
@@ -178,23 +179,23 @@ public class ProfileFragment extends Fragment {
     }
     private void updatePhone(String newPhone){
         if(isPhoneEdit){
-            if(!newPhone.equals(sharedPreferences.getString(StaticClass.PHONE, ""))
-                    && newPhone.length()>9){
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(StaticClass.PHONE, newPhone);
-                editor.apply();
-                initializeData();
-                userReference.put("phone", newPhone);
-                database.collection("users")
-                        .document(emailTV.getText().toString())
-                        .update(userReference);
-                Snackbar.make(fragmentView.findViewById(R.id.parentLayout),
-                        "Phone updated", 1000)
-                        .setAction("Action", null).show();
-            }else{
-                displayError();
+            if(!newPhone.equals(sharedPreferences.getString(StaticClass.PHONE, ""))) {
+                if (newPhone.length() > 9) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(StaticClass.PHONE, newPhone);
+                    editor.apply();
+                    initializeData();
+                    userReference.put("phone", newPhone);
+                    database.collection("users")
+                            .document(emailTV.getText().toString())
+                            .update(userReference);
+                    Snackbar.make(fragmentView.findViewById(R.id.parentLayout),
+                            "Phone updated", 1000)
+                            .setAction("Action", null).show();
+                } else {
+                    displayError();
+                }
             }
-
         }
     }
     private void toggleEditAddress(){
@@ -207,23 +208,23 @@ public class ProfileFragment extends Fragment {
     }
     private void updateAddress(String newAddress){
         if(isAddressEdit){
-            if(!newAddress.equals(sharedPreferences.getString(StaticClass.ADDRESS, ""))
-                    && !newAddress.isEmpty()){
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(StaticClass.ADDRESS, newAddress);
-                editor.apply();
-                initializeData();
-                userReference.put("address", newAddress);
-                database.collection("users")
-                        .document(emailTV.getText().toString())
-                        .update(userReference);
-                Snackbar.make(fragmentView.findViewById(R.id.parentLayout),
-                        "Address updated", 1000)
-                        .setAction("Action", null).show();
-            }else{
-                displayError();
+            if(!newAddress.equals(sharedPreferences.getString(StaticClass.ADDRESS, ""))) {
+                if (!newAddress.isEmpty()) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(StaticClass.ADDRESS, newAddress);
+                    editor.apply();
+                    initializeData();
+                    userReference.put("address", newAddress);
+                    database.collection("users")
+                            .document(emailTV.getText().toString())
+                            .update(userReference);
+                    Snackbar.make(fragmentView.findViewById(R.id.parentLayout),
+                            "Address updated", 1000)
+                            .setAction("Action", null).show();
+                } else {
+                    displayError();
+                }
             }
-
         }
     }
     private void importImage(){
