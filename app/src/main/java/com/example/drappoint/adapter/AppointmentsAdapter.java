@@ -72,6 +72,9 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         AppointmentHistoryDAO dao;
         FirebaseFirestore database;
         SharedPreferences sharedPreferences;
+        HashMap<String, Object> wholeDocument;
+        HashMap<String, Long> reservedDates;
+        long reservationsNumber;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -107,8 +110,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                                     list.get(getAdapterPosition()).getDoctor().getId());
                                             dao.deleteAppointment(
                                                     list.get(getAdapterPosition()).getDoctor().getId());
-                                            list.remove(getAdapterPosition());
-                                            notifyDataSetChanged();
                                         }
                                     })
                             .setNegativeButton(
@@ -119,14 +120,12 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
             });
             itemView.setOnClickListener(this);
         }
-        void deleteStore(String doctorId) {
+        void deleteStore(final String doctorId) {
             DocumentReference patientReference = database.collection("users")
                     .document(sharedPreferences.getString(StaticClass.EMAIL, ""));
-            DocumentReference doctorDateReference =
-                    database.collection("doctors-date")
-                            .document(doctorId);
-            doctorDateReference.update(list.get(getAdapterPosition()).getDate(),
-                    FieldValue.arrayRemove(patientReference))
+            database.collection("doctors-date").document(doctorId)
+                    .update(list.get(getAdapterPosition()).getDate(),
+                            FieldValue.arrayRemove(patientReference))
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -135,6 +134,47 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
+            decrement(doctorId);
+        }
+        void decrement(final String doctorId){
+            database.collection("doctors-date").document(doctorId)
+                    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if(document.exists()){
+                            wholeDocument = (HashMap<String, Object>) document.getData();
+                            reservedDates = (HashMap<String, Long>)
+                                    wholeDocument.get("reservations");
+                            reservationsNumber = reservedDates.get(list.get(getAdapterPosition()).getDate());
+                            reservationsNumber--;
+                            reservedDates.put(list.get(getAdapterPosition()).getDate(), reservationsNumber);
+                            database.collection("doctors-date").document(doctorId)
+                                    .update("reservations", reservedDates)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            list.remove(getAdapterPosition());
+                                            notifyDataSetChanged();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(itemView.getContext(),
+                                                    "Error updating patient list",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    }else{
+                        Toast.makeText(itemView.getContext(),
+                                "get failed with ",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
 
         @Override

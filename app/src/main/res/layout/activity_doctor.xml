@@ -348,7 +348,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <Button
-                android:onClick="makeAppointment"
+                android:onClick="showAppointmentPicker"
                 android:id="@+id/makeAppointmentButton"
                 android:background="@drawable/special_background_rounded_border"
                 android:textColor="@color/white"
@@ -367,12 +367,12 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/shadeLL"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
         android:orientation="vertical"
-        android:alpha="0.5"
-        android:visibility="gone"/>
+        android:alpha="0.5"/>
     <LinearLayout
         android:id="@+id/pickLL"
         android:visibility="gone"
@@ -440,9 +440,17 @@
                     android:gravity="end"/>
             </LinearLayout>
         </LinearLayout>
+        <TextView
+            android:id="@+id/errorTV"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/you_already_booked_this_day"
+            android:textColor="#ff0000"
+            android:layout_gravity="center_horizontal"/>
         <Button
             android:id="@+id/confirmButton"
-            android:onClick="confirmReservation"
+            android:onClick="confirmAppointment"
             android:background="@drawable/grey_background_rounded_border"
             android:textColor="@color/white"
             android:text="@string/confirm"

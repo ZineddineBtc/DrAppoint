@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drappoint.R;
-import com.example.drappoint.StaticClass;
 import com.example.drappoint.adapter.DoctorsAdapter;
 import com.example.drappoint.models.Doctor;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -91,7 +90,6 @@ public class DoctorsFragment extends Fragment {
                                 doctor.setMax((long) document.get("max"));
                                 doctorsList.add(doctor);
                             }
-                            StaticClass.doctors.addAll(doctorsList);
                             setRecyclerView();
                             progressDialog.dismiss();
                         } else {

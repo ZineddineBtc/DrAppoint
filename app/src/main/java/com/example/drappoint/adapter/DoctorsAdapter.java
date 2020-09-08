@@ -61,9 +61,9 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.ViewHold
             if (mClickListener != null)
                 mClickListener.onItemClick(view, getAdapterPosition());
 
+            StaticClass.staticDoctor = list.get(getAdapterPosition());
             itemView.getContext().startActivity(new Intent(itemView.getContext(),
-                    DoctorActivity.class)
-            .putExtra(StaticClass.DOCTOR_ID, list.get(getAdapterPosition()).getId()));
+                    DoctorActivity.class));
         }
     }
 

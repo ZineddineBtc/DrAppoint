@@ -62,4 +62,6 @@
     <string name="delete">Delete</string>
     <string name="from">from</string>
     <string name="team_name">Monks</string>
+    <string name="you_already_booked_this_day">You already booked this day</string>
+    <string name="full">Full</string>
 </resources>

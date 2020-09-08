@@ -21,7 +21,7 @@ public class StaticClass {
     public static String DOCTOR_ID = "doctor_id";
     public static String mySimpleDateFormat = "dd-MM-yyyy";
 
-    public static ArrayList<Doctor> doctors = new ArrayList<>();
+    public static Doctor staticDoctor;
 
     public static boolean isValidEmail(String email) {
         if(email.length()>4){
