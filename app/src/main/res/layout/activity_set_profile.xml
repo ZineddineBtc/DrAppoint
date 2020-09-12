@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="#000000"
-        android:text="@string/name_phone"
+        android:text="@string/name_phone_address"
         app:layout_constraintBottom_toTopOf="@+id/form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

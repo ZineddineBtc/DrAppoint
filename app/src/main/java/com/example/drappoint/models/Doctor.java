@@ -5,7 +5,16 @@ import java.util.HashMap;
 public class Doctor {
     private String id, name, address, city, specialty, phone;
     private long max;
+    private boolean isOnVacation;
     private HashMap<String, String> schedule = new HashMap<>();
+
+    public boolean isOnVacation() {
+        return isOnVacation;
+    }
+
+    public void setOnVacation(boolean onVacation) {
+        isOnVacation = onVacation;
+    }
 
     public long getMax() {
         return max;

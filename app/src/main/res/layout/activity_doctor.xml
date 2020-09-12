@@ -11,6 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <TextView
+            android:id="@+id/onVacationIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/doctor_is_on_vacation"
+            android:textColor="@color/white"
+            android:background="#FF0000"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class DoctorActivity extends AppCompatActivity {
 
-    TextView nameTV, specialtyTV, emailTV, phoneTV, addressTV, maxTV, errorTV,
+    TextView onVacationTV, nameTV, specialtyTV, emailTV, phoneTV, addressTV, maxTV, errorTV,
                 sunday, monday, tuesday, wednesday, thursday, friday, saturday,
             dateTV, reservationsTV, confirmedTV;
     Button confirmButton;
@@ -70,6 +70,7 @@ public class DoctorActivity extends AppCompatActivity {
         setActionBarTitle("Doctor");
     }
     public void findViewsByIds(){
+        onVacationTV = findViewById(R.id.onVacationIV);
         nameTV = findViewById(R.id.nameTV);
         specialtyTV = findViewById(R.id.specialtyTV);
         emailTV = findViewById(R.id.emailTV);
@@ -117,6 +118,7 @@ public class DoctorActivity extends AppCompatActivity {
     }
     @SuppressLint("SetTextI18n")
     public void setUIData(){
+        onVacationTV.setVisibility(doctor.isOnVacation() ? View.VISIBLE : View.GONE);
         nameTV.setText(doctor.getName());
         specialtyTV.setText(doctor.getSpecialty());
         emailTV.setText(doctor.getId());
@@ -204,8 +206,10 @@ public class DoctorActivity extends AppCompatActivity {
         startActivity(browserIntent);
     }
     public void showAppointmentPicker(View view) {
-        shadeLL.setVisibility(View.VISIBLE);
-        pickLL.setVisibility(View.VISIBLE);
+        if(!doctor.isOnVacation()) {
+            shadeLL.setVisibility(View.VISIBLE);
+            pickLL.setVisibility(View.VISIBLE);
+        }
     }
     public void insertAppointmentHistory(){
         new AppointmentHistoryDAO(this)

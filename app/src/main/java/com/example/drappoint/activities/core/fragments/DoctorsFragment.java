@@ -85,6 +85,7 @@ public class DoctorsFragment extends Fragment {
                                 doctor.setSpecialty(document.get("specialty").toString());
                                 doctor.setAddress(document.get("address").toString());
                                 doctor.setCity(document.get("city").toString());
+                                doctor.setOnVacation(document.getBoolean("vacation"));
                                 doctor.setSchedule((HashMap<String, String>)
                                         document.get("schedule"));
                                 doctor.setMax((long) document.get("max"));

@@ -64,4 +64,6 @@
     <string name="team_name">Monks</string>
     <string name="you_already_booked_this_day">You already booked this day</string>
     <string name="full">Full</string>
+    <string name="name_phone_address">Name, phone number, and address</string>
+    <string name="doctor_is_on_vacation">Doctor is on vacation</string>
 </resources>
