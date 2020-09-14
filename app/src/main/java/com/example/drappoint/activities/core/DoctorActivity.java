@@ -183,7 +183,12 @@ public class DoctorActivity extends AppCompatActivity {
             return reservationsNumber < doctor.getMax();
         }catch (NullPointerException e){
             reservationsNumber = 0;
-            reservedDates.put(date, reservationsNumber);
+            try{
+                reservedDates.put(date, reservationsNumber);
+            }catch (NullPointerException m){
+                reservedDates = new HashMap<>();
+                reservedDates.put(date, reservationsNumber);
+            }
             return true;
         }
     }

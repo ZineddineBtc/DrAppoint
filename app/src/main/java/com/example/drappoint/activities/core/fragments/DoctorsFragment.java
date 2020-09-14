@@ -78,18 +78,20 @@ public class DoctorsFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document :
                                     Objects.requireNonNull(task.getResult())) {
-                                Doctor doctor = new Doctor();
-                                doctor.setId(document.getId());
-                                doctor.setName(document.get("name").toString());
-                                doctor.setPhone(document.get("phone").toString());
-                                doctor.setSpecialty(document.get("specialty").toString());
-                                doctor.setAddress(document.get("address").toString());
-                                doctor.setCity(document.get("city").toString());
-                                doctor.setOnVacation(document.getBoolean("vacation"));
-                                doctor.setSchedule((HashMap<String, String>)
-                                        document.get("schedule"));
-                                doctor.setMax((long) document.get("max"));
-                                doctorsList.add(doctor);
+                                if(document.exists()) {
+                                    Doctor doctor = new Doctor();
+                                    doctor.setId(document.getId());
+                                    doctor.setName(document.get("name").toString());
+                                    doctor.setPhone(document.get("phone").toString());
+                                    doctor.setSpecialty(document.get("specialty").toString());
+                                    doctor.setAddress(document.get("address").toString());
+                                    doctor.setCity(document.get("city").toString());
+                                    doctor.setOnVacation(document.getBoolean("vacation"));
+                                    doctor.setSchedule((HashMap<String, String>)
+                                            document.get("schedule"));
+                                    doctor.setMax((long) document.get("max"));
+                                    doctorsList.add(doctor);
+                                }
                             }
                             setRecyclerView();
                             progressDialog.dismiss();
